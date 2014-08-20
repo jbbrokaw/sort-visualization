@@ -13,5 +13,4 @@ sort-visualization
 * The solution was the el0--el10 classes, which contain the updated indexing information
 
 Data taken from the GSS, produced by NORC. http://www3.norc.org/GSS+Website/Data+Analysis/
-
-
+Census Region images from Wikipedia, CC License.
