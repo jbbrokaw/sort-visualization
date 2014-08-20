@@ -1,0 +1,53 @@
+.region {
+  height: 200px;
+  width: 300px;
+  background-size: 300px 200px;
+  background-repeat: no-repeat;
+  font-size: 24pt;
+  padding-top: 80px;
+  padding-left: 130px;
+  position: absolute;
+}
+
+article {
+  position: relative;
+}
+
+#new-england {
+  background-image: url('../images/250px-New_England_USA.svg.png');
+  background-size:
+}
+
+#middle-atlantic {
+  background-image: url('../images/300px-US_Mid-Atlantic_states.png');
+}
+
+#e-nor-central {
+  background-image: url('../images/300px-US_map-E_North_Central.png');
+}
+
+#w-nor-central {
+  background-image: url('../images/300px-US_map-W_North_Central.png');
+}
+
+#south-atlantic {
+  background-image: url('../images/300px-SouthAtlanticStates.png');
+}
+
+#e-sou-central {
+  background-image: url('../images/eastsouthcentralstates.gif');
+}
+
+#w-sou-central {
+  background-image: url('../images/westsouthcentralstates.gif');
+}
+
+#mountain {
+  background-image: url('../images/300px-US_map-Mountain_states.png');
+}
+
+#pacific {
+  background-image: url('../images/286px-US_Pacific_States.svg.png');
+}
+
+
