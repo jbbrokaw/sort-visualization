@@ -25,7 +25,7 @@ $(function () {
       $('.' + destinationClass).removeClass(destinationClass).addClass(originClass);
       $('.' + "TEMP").removeClass("TEMP").addClass(destinationClass);
 
-      for (j = 0; j < 10; j++) {
+      for (j = 0; j < 11; j++) {
         if ((j != index1) && (j != index2)) {
           otherClass = "el" + j;
           $('.' + otherClass).delay(1000);
