@@ -3,24 +3,26 @@ $(function () {
   var happinesses = [];
 
 
-  var findAnimationEndpoint = function (rank) {
-    var topOffset = 200 * Math.floor(rank / 3);
-    var leftOffset = 300 * (rank % 3);
+  var findAnimationEndpoint = function (rank, rows) {
+    var topOffset = 200 * Math.floor(rank / rows);
+    var leftOffset = 300 * (rank % rows);
     return {left: (leftOffset + "px"),
              top: (topOffset + "px")};
   };
 
-  var gaps = [3, 1];
+  var gaps = [4, 3, 1];
 
-  var swapElements = function (index1, index2) {
+  var swapElements = function (index1, index2, gap) {
     if (index1 !== index2) {
       originClass = "el" + index1;
       destinationClass = "el" + index2;
       console.log(originClass + " " + destinationClass);
+      //SWAP POSITIONS
       $('.' + originClass)
-        .animate(findAnimationEndpoint(index2), {duration: 1000});
+        .animate(findAnimationEndpoint(index2, gap), {duration: 1000});
       $('.' + destinationClass)
-        .animate(findAnimationEndpoint(index1), {duration: 1000});
+        .animate(findAnimationEndpoint(index1, gap), {duration: 1000});
+      //SWAP CLASS NAMES
       $('.' + originClass).removeClass(originClass).addClass("TEMP");
       $('.' + destinationClass).removeClass(destinationClass).addClass(originClass);
       $('.' + "TEMP").removeClass("TEMP").addClass(destinationClass);
@@ -30,9 +32,16 @@ $(function () {
           otherClass = "el" + j;
           $('.' + otherClass).delay(1000);
         }
-      };
+      }
     } else {
       $('.region').delay(1000);
+    }
+  };
+
+  var placeOnGrid = function (rows) {
+    for (j = 0; j < 9; j++) {
+      className = "el" + j;
+      $('.' + className).animate(findAnimationEndpoint(j, rows), {duration: 1000});
     }
   };
 
@@ -41,24 +50,24 @@ $(function () {
     var i, j, gap, gapIndex;
     for (gapIndex = 0; gapIndex < gaps.length; gapIndex++) {
       gap = gaps[gapIndex];
+      placeOnGrid(gap);
       for (i = gap; i < happinesses.length; i++) {
         temp = happinesses[i];
-        swapElements(i, 10); //using 10 as a holder for temp
+        swapElements(i, 10, gap); //using 10 as a holder for temp
         for (j = i; j >= gap && happinesses[j - gap] > temp; j -= gap) {
             happinesses[j] = happinesses[j - gap];
-            swapElements(j, j - gap);
+            swapElements(j, j - gap, gap);
         }
         happinesses[j] = temp;
-        swapElements(j, 10);
+        swapElements(j, 10, gap);
       }
     }
   };
 
-  $('div').each(function (index) {
+   $('div').each(function (index) {
     happinesses[index] = Number($(this).text());
-    $(this).animate(findAnimationEndpoint(index), {duration: 2000});
+    $(this).animate(findAnimationEndpoint(index, 3), {duration: 2000});
   });
-
 
   console.log(happinesses);
 
