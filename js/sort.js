@@ -10,8 +10,6 @@ $(function () {
              top: (topOffset + "px")};
   };
 
-  var gaps = [4, 3, 1];
-
   var swapElements = function (index1, index2, gap) {
     if (index1 !== index2) {
       originClass = "el" + index1;
@@ -26,7 +24,7 @@ $(function () {
       $('.' + originClass).removeClass(originClass).addClass("TEMP");
       $('.' + destinationClass).removeClass(destinationClass).addClass(originClass);
       $('.' + "TEMP").removeClass("TEMP").addClass(destinationClass);
-
+      //PUT DELAY ON ALL OTHER CLASSES
       for (j = 0; j < 11; j++) {
         if ((j != index1) && (j != index2)) {
           otherClass = "el" + j;
@@ -46,6 +44,7 @@ $(function () {
   };
 
   var animatedShellSort = function () {
+    var gaps = [4, 3, 1];
     var temp = 0.00;
     var i, j, gap, gapIndex;
     for (gapIndex = 0; gapIndex < gaps.length; gapIndex++) {
@@ -64,7 +63,7 @@ $(function () {
     }
   };
 
-   $('div').each(function (index) {
+  $('div').each(function (index) {
     happinesses[index] = Number($(this).text());
     $(this).animate(findAnimationEndpoint(index, 3), {duration: 2000});
   });
